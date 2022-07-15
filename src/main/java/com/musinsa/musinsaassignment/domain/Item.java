@@ -1,9 +1,6 @@
 package com.musinsa.musinsaassignment.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Item {
@@ -13,4 +10,12 @@ public class Item {
 
     private String name;
     private int price;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn
+    private Brand brand;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn
+    private Category category;
 }
