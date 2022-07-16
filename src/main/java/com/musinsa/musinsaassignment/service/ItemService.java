@@ -1,6 +1,7 @@
 package com.musinsa.musinsaassignment.service;
 
 import com.musinsa.musinsaassignment.dto.ItemByPriceAndCategoryResponse;
+import com.musinsa.musinsaassignment.dto.TotalPriceByBrandResponse;
 import com.musinsa.musinsaassignment.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,4 +20,7 @@ public class ItemService {
         return itemRepository.getMinPriceListByCategory();
     }
 
+    public TotalPriceByBrandResponse getMinTotalPriceAndBrand(){
+        return itemRepository.getMinTotalPriceAndBrand().get(0);
+    }
 }
