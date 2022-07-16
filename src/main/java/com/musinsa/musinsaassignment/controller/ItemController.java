@@ -1,6 +1,7 @@
 package com.musinsa.musinsaassignment.controller;
 
 import com.musinsa.musinsaassignment.dto.ItemByPriceAndCategoryResponse;
+import com.musinsa.musinsaassignment.dto.TotalPriceByBrandResponse;
 import com.musinsa.musinsaassignment.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,5 +18,10 @@ public class ItemController {
     @GetMapping("/getMinPriceListByCategory")
     public List<ItemByPriceAndCategoryResponse> getMinPriceListByCategory(){
         return itemService.getMinPriceListByCategory();
+    }
+
+    @GetMapping("/getMinTotalPriceAndBrand")
+    public TotalPriceByBrandResponse getMinTotalPriceAndBrand(){
+        return itemService.getMinTotalPriceAndBrand();
     }
 }

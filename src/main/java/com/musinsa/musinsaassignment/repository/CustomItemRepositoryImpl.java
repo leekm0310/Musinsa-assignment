@@ -1,6 +1,7 @@
 package com.musinsa.musinsaassignment.repository;
 
 import com.musinsa.musinsaassignment.dto.ItemByPriceAndCategoryResponse;
+import com.musinsa.musinsaassignment.dto.TotalPriceByBrandResponse;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -25,4 +26,16 @@ public class CustomItemRepositoryImpl implements CustomItemRepository {
                 .fetch();
         return result;
     }
+
+    @Override
+    public List<TotalPriceByBrandResponse> getMinTotalPriceAndBrand() {
+        return jpaQueryFactory
+                .select(Projections.constructor(TotalPriceByBrandResponse.class, item.brand.name, item.price.sum()))
+                .from(item)
+                .groupBy(item.brand.id)
+                .orderBy(item.price.sum().asc())
+                .limit(1)
+                .fetch();
+    }
+
 }
