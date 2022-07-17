@@ -28,7 +28,7 @@ public class ItemController {
     }
 
     @GetMapping("/getMinimaxPriceByCategory")
-    public MinimaxPriceByCategoryResponse get1(@RequestParam String category) {
+    public MinimaxPriceByCategoryResponse getMinimaxPriceByCategory(@RequestParam String category) {
         return itemService.getMinimaxPriceByCategory(category);
     }
 }
